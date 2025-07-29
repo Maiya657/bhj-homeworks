@@ -1,15 +1,17 @@
-const reveal = document.querySelector('.reveal');
+const reveals = Array.from(document.querySelectorAll('.reveal'));
 
-const isVisible = () => {
-  const {top, bottom} = reveal.getBoundingClientRect();
+const isVisible = (element) => {
+  const {top, bottom} = element.getBoundingClientRect();
 
   return !(bottom < 0 || top > window.innerHeight);
 } 
 
 document.addEventListener('scroll', () => {
-  if (isVisible()) {
-    reveal.classList.add('reveal_active');
-  } else {
-    reveal.classList.remove('reveal_active');
-  }
+  reveals.forEach((reveal) => {
+    if (isVisible(reveal)) {
+      reveal.classList.add('reveal_active');
+    } else {
+      reveal.classList.remove('reveal_active');
+    }
+  })
 })
