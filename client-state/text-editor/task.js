@@ -6,11 +6,7 @@ editorTextarea.addEventListener('keyup', event => {
   localStorage.setItem('editorContent', editorTextarea.value);  
 })
 
-const savedValue = localStorage.getItem('editorContent');
-
-if (savedValue) {
-  editorTextarea.value = savedValue;
-}
+editorTextarea.value = localStorage.getItem('editorContent');
 
 const editorBtn = document.querySelector('.editor__btn');
 
