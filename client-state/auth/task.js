@@ -17,14 +17,12 @@ formSignin.addEventListener('submit', event => {
   
   const formData = new FormData(formSignin);
   xhr.addEventListener('load', () => {
-    if (xhr.readyState === xhr.DONE) {
-      if (xhr.response.success) {
-        authorisation(xhr.response.user_id);
-        localStorage.setItem('userId', xhr.response.user_id);
-      } else {
-        alert('Неверный логин/пароль');
-        formSignin.reset();
-      }
+    if (xhr.response.success) {
+      authorisation(xhr.response.user_id);
+      localStorage.setItem('userId', xhr.response.user_id);
+    } else {
+      alert('Неверный логин/пароль');
+      formSignin.reset();
     }
   })
   xhr.open('POST', url);
